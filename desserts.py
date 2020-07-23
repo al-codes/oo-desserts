@@ -33,11 +33,11 @@ class Cupcake:
         if self.qty == 0:
             print('Sorry, these cupcakes are sold out')
             return
-
+        #if quantity goes below zero sets qty to zero
         if self.qty < amount:
             self.qty = 0
             return
-
+        #subtracts cupcakes sold
         self.qty -= amount
 
     # @staticmethod
