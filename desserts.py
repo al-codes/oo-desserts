@@ -40,7 +40,7 @@ class Cupcake:
         #subtracts cupcakes sold
         self.qty -= amount
 
-    # @staticmethod
+    @staticmethod
     def scale_recipe(ingredients, amount):
         """Scale ingredients list by the given amount."""
 
@@ -57,6 +57,33 @@ class Cupcake:
 
         return cls.cache[name]
 
+#need to figure out inheritance
+class Brownie(Cupcake):
+    """A brownie."""
+
+    flavor = 'brownie'
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.qty = 0
+
+        self.cache[name] = self
+
+    def __repr__(self):
+        """Human-readable printout for debugging."""
+
+        return f'<Brownie name="{self.name}" qty={self.qty}>'
+
+    @classmethod
+    def get(cls, name):
+        """Get a brownie by its name."""
+
+        if name not in cls.cache:
+            print('Sorry, that brownie doesn\'t exist')
+            return
+
+        return cls.cache[name]
 
 if __name__ == '__main__':
     import doctest
